@@ -8,12 +8,10 @@ public class PlayerController : MonoBehaviour
     int liczbacalkowita;
     //float liczbaprzecinkowa = 0.1f;
 
-    public float speed;
-
-
+    public float speed = 5;
     public Rigidbody rigidbody;
-
-
+    public Transform startPoint;
+    public int zebranePunkty;
     void Start()
     {
         Debug.Log("Use WSAD to move");
@@ -36,6 +34,15 @@ public class PlayerController : MonoBehaviour
             rigidbody.AddForce(0, 0, directionVertical * Time.deltaTime * speed, ForceMode.Impulse);
         }
 
+        //Debug.Log(rigidbody.velocity);
+
+        if (transform.position.y < -1)
+        {
+            transform.position = startPoint.position;
+            rigidbody.velocity = Vector3.zero;
+
+            Vector3 test = new Vector3(0, 1, 0);
+        }
         /*
         if (Input.GetKey(KeyCode.A))
         {
